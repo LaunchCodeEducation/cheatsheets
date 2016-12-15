@@ -1,8 +1,6 @@
 # Python 2 versus Python 3
 
-To date, we've used Python 3 in this course. However, Unit 2 makes use of Python 2. The reason for this is that much of our work will be done using Google App Engine, and it uses Python 2. There are quite a few differences between the two versions, but you won't encounter most of them.
-
-Here, we highlight the two that will impact you the most. Thankfully, they're relatively easy to get used to. If you're curious about the other differences, [Sebastian Raschka's article](http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html) on the topic lays them out nicely.
+The most prominent differences between Python 2 and Python 3 are presented here. Thankfully, they're relatively easy to get used to. If you're curious about the other differences, [Sebastian Raschka's article](http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html) on the topic lays them out nicely.
 
 ## Using `print`
 
