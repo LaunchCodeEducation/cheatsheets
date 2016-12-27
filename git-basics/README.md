@@ -18,7 +18,7 @@ Initialized empty Git repository in /Users/adalovelace/lc101/new-project/.git/
 
 To create a local version of a pre-existing project on GitHub, visit that project's page and copy the **Clone or download** URL.
 
-![Clone or download URL](images/clone-download-url.png)
+<img src="images/clone-download-url.png" alt="Clone or download URL" />
 
 Then at a terminal:
 ```nohighlight
@@ -142,15 +142,15 @@ At LaunchCode we'll always use [GitHub](https://github.com/) to store our remote
 
 When signed in, you can create a new remote repository by clicking on the plus icon near your profile, at the top right.
 
-![New Repository](images/new-repo.png)
+<img src="images/new-repo.png" alt="New Repository" />
 
 Fill out the resulting form and submit to create a new repository. You now need to connect your local repository to your remote. First, copy the remote repository URL from the the screen you're on:
 
-![Copy URL from new repository](images/copy-url-from-new.png)
+<img src="images/copy-url-from-new.png" alt="Copy URL from new repository" />
 
 If you chose to initialize your repository with a `README` or `.gitignore` file, your screen will look slightly different. Copy the project URL using the **Clone or download** button on your project's page.
 
-![Copy URL from new repo w/ files](images/clone-or-dl.png)
+<img src="images/clone-or-dl.png" alt="Copy URL from new repo w/ files" />
 
 > *NOTE:* The project URL is **not** the same as the URL of your project page on GitHub, although they are similar. Do not copy the URL from the address bar, since this URL does not have the required `.git` extension. Always look for the **Clone or download** button to obtain the project URL.
 
@@ -167,7 +167,7 @@ A scenario that will occur from time-to-time in LaunchCode courses, and which oc
 
 To fork another developer's repository, visit the project at GitHub and hit the Fork button:
 
-![Fork button](images/fork.png)
+<img src="images/fork.png" alt="Fork button" />
 
 This will create a *copy* of the remote repository under your own GitHub profile. You will have a snapshot of the other developer's repository, taken at the moment you hit the Fork button.
 
@@ -175,4 +175,4 @@ From your own profile page, you will see the forked repository listed alongside 
 
 Forked repositories can easily be identified by the reference to the original project under the project name on your profile.
 
-![Forked repository](images/forked-repo.png)
+<img src="images/forked-repo.png" alt="Forked repository" />
