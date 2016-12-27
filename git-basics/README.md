@@ -1,7 +1,3 @@
-<style type="text/css">
-img { width:400px; }
-</style>
-
 # Git Basics
 
 This cheatsheet covers basic commands for creating and working with local and remote Git repositories.
@@ -22,7 +18,7 @@ Initialized empty Git repository in /Users/adalovelace/lc101/new-project/.git/
 
 To create a local version of a pre-existing project on GitHub, visit that project's page and copy the **Clone or download** URL.
 
-<img src="images/clone-download-url.png" alt="Clone or download URL" />
+<img src="images/clone-download-url.png" alt="Clone or download URL" style="width:400px;" />
 
 Then at a terminal:
 ```nohighlight
@@ -146,15 +142,15 @@ At LaunchCode we'll always use [GitHub](https://github.com/) to store our remote
 
 When signed in, you can create a new remote repository by clicking on the plus icon near your profile, at the top right.
 
-<img src="images/new-repo.png" alt="New Repository" />
+<img src="images/new-repo.png" alt="New Repository" style="width:400px;" />
 
 Fill out the resulting form and submit to create a new repository. You now need to connect your local repository to your remote. First, copy the remote repository URL from the the screen you're on:
 
-<img src="images/copy-url-from-new.png" alt="Copy URL from new repository" style="width:100%;"/>
+<img src="images/copy-url-from-new.png" alt="Copy URL from new repository" />
 
 If you chose to initialize your repository with a `README` or `.gitignore` file, your screen will look slightly different. Copy the project URL using the **Clone or download** button on your project's page.
 
-<img src="images/clone-or-dl.png" alt="Copy URL from new repo w/ files" />
+<img src="images/clone-or-dl.png" alt="Copy URL from new repo w/ files" style="width:400px;" />
 
 > *NOTE:* The project URL is **not** the same as the URL of your project page on GitHub, although they are similar. Do not copy the URL from the address bar, since this URL does not have the required `.git` extension. Always look for the **Clone or download** button to obtain the project URL.
 
@@ -171,7 +167,7 @@ A scenario that will occur from time-to-time in LaunchCode courses, and which oc
 
 To fork another developer's repository, visit the project at GitHub and hit the Fork button:
 
-<img src="images/fork.png" alt="Fork button" />
+<img src="images/fork.png" alt="Fork button" style="width:400px;" />
 
 This will create a *copy* of the remote repository under your own GitHub profile. You will have a snapshot of the other developer's repository, taken at the moment you hit the Fork button.
 
@@ -179,4 +175,4 @@ From your own profile page, you will see the forked repository listed alongside 
 
 Forked repositories can easily be identified by the reference to the original project under the project name on your profile.
 
-<img src="images/forked-repo.png" alt="Forked repository" />
+<img src="images/forked-repo.png" alt="Forked repository" style="width:400px;" />
