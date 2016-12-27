@@ -5,7 +5,8 @@ This cheatsheet covers basic commands for creating and working with local and re
 ## Basic Workflow
 
 For most situations, you'll want to use the following basic workflow for git project:
-1. Make changes to code
+
+1. Make changes to your code
 2. Check status: `$ git status`
 3. Stage changes: `$ git add .`
 4. Commit changes: `$ git commit -m "Added feature X"`
