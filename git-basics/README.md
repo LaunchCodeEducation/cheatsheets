@@ -1,3 +1,7 @@
+<style type="text/css">
+img { width:400px; }
+</style>
+
 # Git Basics
 
 This cheatsheet covers basic commands for creating and working with local and remote Git repositories.
@@ -146,7 +150,7 @@ When signed in, you can create a new remote repository by clicking on the plus i
 
 Fill out the resulting form and submit to create a new repository. You now need to connect your local repository to your remote. First, copy the remote repository URL from the the screen you're on:
 
-<img src="images/copy-url-from-new.png" alt="Copy URL from new repository" />
+<img src="images/copy-url-from-new.png" alt="Copy URL from new repository" style="width:100%;"/>
 
 If you chose to initialize your repository with a `README` or `.gitignore` file, your screen will look slightly different. Copy the project URL using the **Clone or download** button on your project's page.
 
