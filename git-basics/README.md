@@ -2,6 +2,17 @@
 
 This cheatsheet covers basic commands for creating and working with local and remote Git repositories.
 
+## Basic Workflow
+
+For most situations, you'll want to use the following basic workflow for git project:
+1. Make changes to code
+2. Check status: `$ git status`
+3. Stage changes: `$ git add .`
+4. Commit changes: `$ git commit -m "Added feature X"`
+5. (If working with a remote repository) Push changes: `$ git push origin master`
+
+The details of these commands, along with the basics of how to get repositories up and running, are detailed below.
+
 ## Creating a Repository
 
 How you create your repository depends on whether or not you're starting with an new, empty project or with a pre-existing project.
