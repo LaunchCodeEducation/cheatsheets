@@ -154,8 +154,19 @@ To push all committed changes from your local repository to a remote repository 
 
 ```nohighlight
 $ git push origin master
-
+Counting objects: 4, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 934 bytes | 0 bytes/s, done.
+Total 4 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:LaunchCodeEducation/cheatsheets.git
+   73f1872..2926328  master -> master
 ```
+
+This command can be verbalized as, "Hey, git, push all of my commits to the master branch of the remote repository named 'origin'." This sheet doesn't cover branch usages, and for most commands here referring to a branch is unecessary, but to use `push` it is required.
+
+> *NOTE:* Only changes that have been committed will be pushed. If you push changes to GitHub and you don't see them reflected in your remote project, check that you actually commited them.
 
 ## Working With Remote Repositories
 
