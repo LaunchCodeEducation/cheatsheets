@@ -2,7 +2,7 @@
 
 This cheatsheet covers basic commands for creating and working with local and remote Git repositories.
 
-## Basic Workflow
+## Quick Reference: Basic Workflow
 
 For most situations, you'll want to use the following basic workflow for git project:
 
@@ -12,15 +12,17 @@ For most situations, you'll want to use the following basic workflow for git pro
 4. Commit changes: `$ git commit -m "Added feature X"`
 5. (If working with a remote repository) Push changes: `$ git push origin master`
 
-The details of these commands, along with the basics of how to get repositories up and running, are detailed below.
+The details of these commands, along with the basics of how to get repositories set up, are detailed below.
+
+This sheet does not cover intermediate topics like branching, fetching, and merging.
 
 ## Creating a Repository
 
-How you create your repository depends on whether or not you're starting with an new, empty project or with a pre-existing project.
+How you create your repository depends on whether or not you're starting with an new, empty project or with a pre-existing project from a remote location like GitHub.
 
 ### Creating a Local Repository: `git init`
 
-To create a local repository for a new project, run the following command from the project directory:
+To create an empty local repository for a new project, run the following command from the project directory:
 ```nohighlight
 $ git init
 Initialized empty Git repository in /Users/adalovelace/lc101/new-project/.git/
@@ -32,7 +34,7 @@ To create a local version of a pre-existing project on GitHub, visit that projec
 
 <img src="images/clone-download-url.png" alt="Clone or download URL" width="480" />
 
-> *NOTE:* The project URL is **not** the same as the URL of your project page on GitHub, although they are similar. Do not copy the URL from the address bar, since this URL does not have the required `.git` extension. Always look for the **Clone or download** button to obtain the project URL.
+> *NOTE:* The project URL is **not** the same as the URL in your browser's address bar, although they are similar. Do not copy the URL from the address bar. Always look for the **Clone or download** button to obtain the project URL.
 
 Then at a terminal:
 ```nohighlight
@@ -45,7 +47,9 @@ Unpacking objects: 100% (13/13), done.
 
 ## Check Repository Status: `git status`
 
-The `status` command of `git` is one of the most commonly-used. It can tell you which branch you are currently working on, changes between your repo and a remote repo, which files are staged for commit, and which changed or new files are not being tracked.
+The `status` command of `git` is one of the most commonly-used and most essential. It gives you vital information about the current state of your local repository, including which branch you are currently working on, changes between your local repo and a remote repo, which files are staged for commit, and which changed or new files are not stage or tracked.
+
+**Use `git status` frequently**, especially before getting ready to carry out a new operation on your repository. Here are a few examples of output:
 
 **No outstanding changes, not connected to a remote:**
 ```nohighlight
@@ -82,10 +86,11 @@ Untracked files:
 
 ## Staging Files for Commit: `git add`
 
-Git keeps track of changes to files within your project, but only if you tell it to. To commit changes to new or existing files, you must first *stage* those files using the `add` command.
+Git keeps track of changes to files within your project, but only if you tell it to. To commit changes to new or existing files, you must first *stage* those files using git's `add` command.
 
 If you have created a new file, but not staged it, `git status` will show the following:
 ```nohighlight
+$ git status
 On branch master
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
@@ -112,6 +117,7 @@ Changes to be committed:
 
 If you modify a file that has already been added to the repository, it's status will be:
 ```nohighlight
+$ git status
 On branch master
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
@@ -129,7 +135,7 @@ If you have lots of changes or new files to add, you can add them all at once us
 $ git add .
 ```
 
-> *NOTE:* Before using `git add .` make sure you know what you'll be staging! Run `git status` first. This will save you lots of headaches, and keep you from staging files unintentionally.
+> *NOTE:* Before using `git add .` make sure you know what you'll be staging! Run `git status` first. This will save you lots of headaches, and keep you from staging and committing unwanted changes.
 
 ## Committing Files: `git commit`
 
@@ -141,6 +147,15 @@ $ git commit -m "Add amazing new feature"
 ```
 
  The `-m` flag adds a descriptive message, which will help you quickly tell which changes were included in the commit later on. Use concise, descriptive messages! And don't forget to surround your commit message with quotes.
+
+## Pushing Files to a Remote Repository: `git push`
+
+To push all committed changes from your local repository to a remote repository (e.g. a repository on GitHub), use git's `push` command:
+
+```nohighlight
+$ git push origin master
+
+```
 
 ## Working With Remote Repositories
 
