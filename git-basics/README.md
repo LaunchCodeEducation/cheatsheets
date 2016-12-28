@@ -18,7 +18,7 @@ The details of these commands, along with the basics of how to get repositories 
 
 How you create your repository depends on whether or not you're starting with an new, empty project or with a pre-existing project.
 
-### Creating a Local Repository
+### Creating a Local Repository: `git init`
 
 To create a local repository for a new project, run the following command from the project directory:
 ```nohighlight
@@ -26,11 +26,13 @@ $ git init
 Initialized empty Git repository in /Users/adalovelace/lc101/new-project/.git/
 ```
 
-### Cloning a Remote Repository from GitHub
+### Cloning a Remote Repository from GitHub: `git clone`
 
 To create a local version of a pre-existing project on GitHub, visit that project's page and copy the **Clone or download** URL.
 
 <img src="images/clone-download-url.png" alt="Clone or download URL" style="width:400px;" />
+
+> *NOTE:* The project URL is **not** the same as the URL of your project page on GitHub, although they are similar. Do not copy the URL from the address bar, since this URL does not have the required `.git` extension. Always look for the **Clone or download** button to obtain the project URL.
 
 Then at a terminal:
 ```nohighlight
@@ -41,18 +43,18 @@ remote: Total 13 (delta 0), reused 0 (delta 0), pack-reused 13
 Unpacking objects: 100% (13/13), done.
 ```
 
-## Check Repository Status
+## Check Repository Status: `git status`
 
 The `status` command of `git` is one of the most commonly-used. It can tell you which branch you are currently working on, changes between your repo and a remote repo, which files are staged for commit, and which changed or new files are not being tracked.
 
-**No outstanding changes, not connected to a remote**
+**No outstanding changes, not connected to a remote:**
 ```nohighlight
 $ git status
 On branch master
 nothing to commit, working tree clean
 ```
 
-**No outstanding changes, connected to a remote**
+**No outstanding changes, connected to a remote:**
 ```nohighlight
 $ git status
 On branch master
@@ -60,7 +62,7 @@ Your branch is up-to-date with 'origin/master'.
 nothing to commit, working tree clean
 ```
 
-**Outstanding changes, connected to a remote**
+**Outstanding changes, connected to a remote:**
 ```nohighlight
 $ git status
 On branch master
@@ -78,7 +80,7 @@ Untracked files:
 	git-basics/
 ```
 
-## Staging Files for Commit
+## Staging Files for Commit: `git add`
 
 Git keeps track of changes to files within your project, but only if you tell it to. To commit changes to new or existing files, you must first *stage* those files using the `add` command.
 
@@ -129,7 +131,7 @@ $ git add .
 
 > *NOTE:* Before using `git add .` make sure you know what you'll be staging! Run `git status` first. This will save you lots of headaches, and keep you from staging files unintentionally.
 
-## Committing Files
+## Committing Files: `git commit`
 
 To commit all staged changes to your *local* repository, use git's `commit` command.
 ```nohighlight
@@ -160,11 +162,7 @@ Fill out the resulting form and submit to create a new repository. You now need 
 
 <img src="images/copy-url-from-new.png" alt="Copy URL from new repository" />
 
-If you chose to initialize your repository with a `README` or `.gitignore` file, your screen will look slightly different. Copy the project URL using the **Clone or download** button on your project's page.
-
-<img src="images/clone-or-dl.png" alt="Copy URL from new repo w/ files" style="width:400px;" />
-
-> *NOTE:* The project URL is **not** the same as the URL of your project page on GitHub, although they are similar. Do not copy the URL from the address bar, since this URL does not have the required `.git` extension. Always look for the **Clone or download** button to obtain the project URL.
+If you chose to initialize your repository with a `README` or `.gitignore` file, your screen will look slightly different. Copy the project URL using the **Clone or download** button on your project's page (see screenshot and note above).
 
 Then, from the terminal, in your project directory:
 ```nohighlight
