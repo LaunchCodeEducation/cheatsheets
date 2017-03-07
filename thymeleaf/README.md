@@ -1,5 +1,6 @@
 Thymeleaf cheat sheet
-==================
+=====================
+
 This is a cheat sheet to summarize all the main thymeleaf features and how to use them to kickstart you with thymeleaf.
 
 ## What is Thymeleaf?
@@ -55,7 +56,7 @@ Example:
 * `th:attr` : Takes an HTML attribute and sets it's value dynamically, example: '
 `<input type="submit" value="Subscribe me!" th:attr="value=${subscribe.submit}"/>`
 The `value` attribute will be set to the value of `${subscribe.submit}` after processing, replacing the supplied `value="Subscribe me!"`
-* `th:value`,`th:action`,`th:href, th:onclick`...etc: Those attributes can be used as a shorthand of the `th:attr` syntax as equally equivilant to it, so the attribute `th:action` is equal to `th:attr="action="`
+* `th:value`,`th:action`,`th:href, th:onclick`...etc: Those attributes can be used as a shorthand of the `th:attr` syntax as equally equivalent to it, so the attribute `th:action` is equal to `th:attr="action="`
 * `th:attrappend`: This will not replace the attribute value, but will only append the value to it, example: `th:attrappend="class=${' ' + cssStyle}"`, for more information check [setting_attribute_values](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
 * `th:each`: This is the iteration attribute, it is analogous to Java's for-each loop: `for(Object o : list)`, but its syntax is
 
