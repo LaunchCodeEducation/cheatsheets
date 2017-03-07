@@ -60,17 +60,27 @@ The `value` attribute will be set to the value of `${subscribe.submit}` after pr
 * `th:attrappend`: This will not replace the attribute value, but will only append the value to it, example: `th:attrappend="class=${' ' + cssStyle}"`, for more information check [setting_attribute_values](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
 * `th:each`: This is the iteration attribute, it is analogous to Java's for-each loop: `for(Object o : list)`, but its syntax is
 
-```html
-<tr th:each="prod,iterStat : ${prods}" th:class="${iterStat.odd}? 'odd'">
-	<td th:text="${prod.name}">Onions</td>
-	<td th:text="${prod.price}">2.41</td>
-	<td th:text="${prod.inStock}? ${true} : ${false}">yes</td>
-</tr>
-```
+	```html
+	<tr th:each="prod,iterStat : ${prods}" th:class="${iterStat.odd}? 'odd'">
+		<td th:text="${prod.name}">Onions</td>
+		<td th:text="${prod.price}">2.41</td>
+		<td th:text="${prod.inStock}? ${true} : ${false}">yes</td>
+	</tr>
+	```
 
-The `th:each="prod,iterStat : ${prods}"` is equivilent to `for(Product prod : prods)` and the `iterStat` is the status variable of the iteration, it contains inforamtion about current iteration like its number,index,total count ...etc.
+	The `th:each="prod,iterStat : ${prods}"` is equivilent to `for(Product prod : prods)` and the `iterStat` is the status variable of the iteration, it contains inforamtion about current iteration like its number,index,total count ...etc.
 
-The iteration object `prod` can then be accessed in the context of the tag `<th>`, meaning it will only exist within the tag that it's been defined in, for more information check [iteration](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#iteration)
+	The iteration object `prod` can then be accessed in the context of the tag `<th>`, meaning it will only exist within the tag that it's been defined in, for more information check [iteration](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#iteration)
+
+	When iterating over a map, the components of each item can be accessed using `.key` and `.value`:
+
+	```html
+	<tr th:each="mapItem : ${map}">
+		<td th:text="${prod.key}">Key</td>
+		<td th:text="${prod.value}">Value</td>
+	</tr>
+	```
+
 * `th:if`: Evaluates the conditions specified in the attribute and if they are true, the tag is displayed, if not they are not displayed, example : `th:if="${user.admin}"`
 * `th:unless`: Is the opposite of `th:if`, it will display the tag if the value is false, so `th:unless="${user.admin}"` is equal to `th:if="${!(user.admin)}"`
 * `th:switch` and `th:case`: Those attributes are used to create a swtich statement, `th:switch` will hold the variable to switch on, and `th:case` will evaluate the case statements for this variable, example
