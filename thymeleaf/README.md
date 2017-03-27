@@ -1,7 +1,7 @@
 Thymeleaf cheat sheet
 =====================
 
-This is a cheat sheet to summarize all the main thymeleaf features and how to use them to kickstart you with thymeleaf.
+This is a cheat sheet to summarize all the main Thymeleaf features and how to use them to kickstart you with Thymeleaf.
 
 ## What is Thymeleaf?
 
@@ -22,7 +22,7 @@ Those attributes are then translated and processed by Thymeleaf into normal HTML
 <p th:text="'Thymeleaf will display this'">text</p>
 ```
 
-Here thymeleaf will process the text inside the `th:text` attribute, and replace the contents of the `<p>` tag with it.
+Here Thymeleaf will process the text inside the `th:text` attribute, and replace the contents of the `<p>` tag with it.
 
 We can use **variable expressions** syntax `${...}` to insert data passed in from a controller.
 
@@ -39,7 +39,7 @@ Thymeleaf works by replacing the contents of the tags that it's attributes are d
 <tr>
 ```
 
-Here thymeleaf will repeat the `<tr>` with the list of products, this is defined by the attribute `th:each`, it will also remove the dummy content in both the `<td>` tags, and replace them with the content that is evaluated from `th:text="${prod.name}"` and `th:text="${prod.price}"`.
+Here Thymeleaf will repeat the `<tr>` with the list of products, this is defined by the attribute `th:each`, it will also remove the dummy content in both the `<td>` tags, and replace them with the content that is evaluated from `th:text="${prod.name}"` and `th:text="${prod.price}"`.
 
 ## Attributes
 
@@ -52,7 +52,7 @@ Example:
 <p th:text="${home.welcome}">Welcome to our grocery store!</p>
 ```
 
-* `th:utext`: Similar to previous attribute but this one display text **unescaped** for more inforamtion check [using_texts](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#using-texts)
+* `th:utext`: Similar to previous attribute but this one display text **unescaped** for more information check [using_texts](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#using-texts)
 * `th:attr` : Takes an HTML attribute and sets it's value dynamically, example: '
 `<input type="submit" value="Subscribe me!" th:attr="value=${subscribe.submit}"/>`
 The `value` attribute will be set to the value of `${subscribe.submit}` after processing, replacing the supplied `value="Subscribe me!"`
@@ -68,7 +68,7 @@ The `value` attribute will be set to the value of `${subscribe.submit}` after pr
 	</tr>
 	```
 
-	The `th:each="prod,iterStat : ${prods}"` is equivilent to `for(Product prod : prods)` and the `iterStat` is the status variable of the iteration, it contains inforamtion about current iteration like its number,index,total count ...etc.
+	The `th:each="prod,iterStat : ${prods}"` is equivalent to `for(Product prod : prods)` and the `iterStat` is the status variable of the iteration, it contains information about current iteration like its number,index,total count ...etc.
 
 	The iteration object `prod` can then be accessed in the context of the tag `<th>`, meaning it will only exist within the tag that it's been defined in, for more information check [iteration](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#iteration)
 
@@ -97,14 +97,14 @@ For more information check [conditional_evaluation](http://www.thymeleaf.org/doc
 
 ## Expressions
 
-Thymeleaf works based on many expressions, thymeleaf has different expression syntax other than the traditional `${variablename.propertyname}` syntax, namely:
+Thymeleaf works based on many expressions, Thymeleaf has different expression syntax other than the traditional `${variablename.propertyname}` syntax, namely:
 
 * `${message.in.proprties.file}` similar to the **i18n** resolver in **JSF**, this expressions will look for the value provided in the localization properties files provided to the application.
 Example: `<p th:text="${brand.name}">Brand Name</p>`, when using spring it will use the `MessageSource` of spring
 * `${variable}`: This is the variables expression, if your expression should evaluate to a variable or you have a variable in your `model` as an attribute, you must use this expression to access it, other expressions are used for different purposes and may not functional correctly with variables, example:
 `<span th:text="${today}">13 february 2011</span>`
 
-* Thymeleaf provides some predefined variables that can be accessed using the `${#variableName}` syntaxt and they are:
+* Thymeleaf provides some predefined variables that can be accessed using the `${#variableName}` syntax and they are:
 
 1. `#ctx` : the context object.
 2. `#vars`: the context variables .
@@ -112,7 +112,7 @@ Example: `<p th:text="${brand.name}">Brand Name</p>`, when using spring it will 
 4. `#httpServletRequest` : (only in Web Contexts ) the         				`HttpServletRequest` object.
 5. `#httpSession`: The session object of current session
 6. `#dates` : utility methods for `java.util.Date` objects : formatting , component extraction, etc.
-7. `#calendars` : analog ous to #dates , but for `java.util.Calendar` objects .
+7. `#calendars` : analogous to #dates , but for `java.util.Calendar` objects .
 8. `#numbers` : utility methods for formatting numeric objects .
 9. `#strings` : utility methods for String objects : contains , startsWith, prepending /appending , etc.
 10. `#objects` : utility methods for objects in general.
@@ -145,17 +145,17 @@ and
 
 This will access properties on `${session.user}` object directly using the `*{...}` syntax, like for `*{firstName}`, this is equal to using `${session.user.firstName}`
 
-*Note*: The `th:object` is defined only in the context of the tag it's declare on, meaning it's not available outside the context of that tag.
+*Note*: The `th:object` is defined only in the context of the tag it's declared on, meaning it's not available outside the context of that tag.
 
 * `@{/link/path}`: This will create a link to the path specified relative to the deployment context, so if the application is deployed at context **my-app**, then the generated path will be **/my-app/link/path**.
-To add get parameters use `@{/link/path(param=value)}` which will generate **/link/path?param=value**
-For Path variables use: `@{/link/{pathVariable}/path(pathVariable=${variable})}`
-which will replace the **{pathVariable}** with the value from **${variable}**
+To include parameters, use `@{/link/path(param=value)}`. This will generate **/link/path?param=value**
+For Path variables use: `@{/link/{myPathVariable}/path(myPathVariable=${variable})}`
+which will replace the **{myPathVariable}** with the value from **${variable}**
 
 *  Literals: You can also write some normal literals instead of any expressions,
 	* "'the literal string'": You can write normal strings between two **''**  single quotes
 	*  "3 + 2": Normal numeric expressions
-	* "false","true" and "null": are evaluted to normal `false`,`true` and `null` expressions
+	* "false","true" and "null": are evaluated to normal `false`,`true` and `null` expressions
 	* "singleWordToken": tokens with single words do not need single quotes and can be writtes as is.
-* `${#fields}`:  Spring MVC adds another predined varable which is `#fields`, it refers to `spring-form`  fields and their validation erros, mainly used for error validation
+* `${#fields}`:  Spring MVC adds another predefined variable which is `#fields`, it refers to `spring-form`  fields and their validation errors, mainly used for error validation
 * `${@beanName.method()}`: Also spring specific bean method call expression, this will call a method on a spring bean called `beanName`, it will look for the bean in the current spring context
