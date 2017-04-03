@@ -1,20 +1,50 @@
 # Spring Boot Persistence Cheat Sheet
 
-This cheat sheet is broadly applicable, but assumes that you're using H2, Spring Boot, and Gradle.
+This cheat sheet is broadly applicable, but assumes that you're using MySQL 5.x, Spring Boot, and Gradle.
 
-## POM Dependencies
+## Using MySQL
 
-Add the following to the `dependencies section of your `build.gradle` (listed here as GroupID / ArtifactID):
-    - `compile('org.springframework.boot:spring-boot-starter-data-jpa')` (includes Hibernate as a dependency)
-    - `compile('com.h2database:h2')`
+Using a local MySQL database will allow your data to persist between application shutdown and startup. An easy way to install MySQL on Mac and Windows is via [MAMP](https://www.mamp.info/en/).
+
+### Dependencies
+
+Add the following to the `dependencies` section of your `build.gradle`:
+```nohighlight
+compile('org.springframework.boot:spring-boot-starter-data-jpa')
+compile('mysql:mysql-connector-java')
+```
+
+The `spring-boot-starter-data-jpa` artifact includes the Hibernate ORM framework. We won't talk explicitly about Hibernate since we won't need to work with it directly in most situations. We'll primarily work with Java Persistence API annotations, but you should know that Hibernate provides the implementation for most of these behaviors behind the scenes.
+
+### `application.properties`
+
+The database connection needs to be configured via `src/main/resources/application.properties`.
+
+These properties use `property=value` syntax. For many, there are alternative values listed in the Spring documentation, but these are good for most purposes. The database user specified should have all privileges on the given database.
+
+`spring.datasource.url` - of the form `jdbc:mysql://localhost:8889/db` for a local database `db` on the default MySQL port 8889
+
+`spring.datasource.username` - Username to use when connecting to the db
+
+`spring.datasource.password` - Password to use when connecting to the db
+
+`spring.jpa.database = MYSQL` - specifies that you'll be using a MySQL database
+
+`spring.jpa.hibernate.ddl-auto = update` - Spring should attempt to update the database schema upon restart to reflect any changes to persistent model classes
+
+`spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect` - Specifies that we're using MySQL 5.x
+
+The database engine must be running when you start up your application.
 
 ## Java Persistence API (JPA)
 
 ### Class Annotations
 
-`@Entity` - Required for Hibernate to store/retrieve instances of the class to/from the database.
+`@Entity` - Required for Hibernate to store/retrieve instances of the class to/from the database. Every field of the class not marked `@Transient` will be stored in the database (see below for more on `@Transient`).
 
-`@Table` - *Optional*. Specifies the name of the table in the given database used to store the objects properties. If omitted, the table name is generated via the configured naming convention.
+`@Transactional` - Most often used on `CrudRepository` interfaces. Specifies that if any data operation within the class throws a runtime exception, all associated database queries should be rolled back (that is, undone). This can prevent data corruption caused by exceptions.
+
+`@Table` - *Optional*. Specifies the name of the table in the given database used to store the objects properties. If omitted, the table name is generated via the default rules.
 
 ### Setting up your class
 
@@ -32,7 +62,7 @@ This allows Hibernate to create a new instance of your object, no matter what pr
 
 These are annotations are applicable within a class annotated by `@Entity`. They determine how object fields are persisted in a database.
 
-These annotations can, in most cases, be applied to object fields directly, or to their getter methods. We recommend applying them to fields, which means you don't have to expose a public setter for the given property, which can break encapsulation (think of an `id` field with a public setter). [Read about][field-vs-property] how these two approaches are different, and why you might choose one over the other.
+These annotations can, in most cases, be applied to object fields directly, but they can also be applied to their getter methods. We recommend applying them to fields. Doing so means you don't have to expose a public setter for the given property, which can break encapsulation (think of an `id` field with a public setter). [Read about][field-vs-property] how these two approaches are different, and why you might choose one over the other.
 
 `@NotNull` - This is not actually a JPA annotation -- it is part of the `javax.validation.constraints` package -- but Hibernate enforces it as well. Specifies that the field may not be null.
 
@@ -46,49 +76,11 @@ These annotations can, in most cases, be applied to object fields directly, or t
 
 `@OneToMany` - Specifies a field that is a collection of other persistent objects.
 
-`@ManyToOne` - The inverse (or "other side") of the `@OneToMany` annotation. This is used within a class that is "owned" by another class, to annotate a field that points back to the "owner". For example, with `User` and `Post` classes (where `Post` represents a blog post, of which a `User` can have many), the `Post` class can have an `author` field that points to the object that owns it.s
+`@ManyToOne` - The inverse (or "other side") of the `@OneToMany` annotation. This is used within a class that is "owned" by another class, to annotate a field that points back to the "owner". For example, with `Item` and `Category` classes (where `Item` is contained in a `Category`, that is, a `Category` has many `Item` objects), the `Item` class can have a `category` field that points to the object that owns it.
 
-`@JoinColumn` - Typically used in conjunction with `@OneToMany`, this annotation specifies the column on the "owned" object's table that should be used to identify it's owner. In the blog example, the value of the `author_uid` column specifies the `uid` of the `User` that owns the `Post`.
+`@JoinColumn` - Typically used in conjunction with `@OneToMany`, this annotation specifies the column on the "owned" object's table that should be used to identify it's owner. In the `Item`/`Category` example, the value of the `category_id` column specifies the `id` of the `Category` that owns the `Item`.
 
 `@Transient` - Specifies that Hibernate *should not* store the field in the database.
-
-## Using MySQL
-
-Using a local MySQL database will allow your data to persist between application shutdown and startup. H2 databases exists only while the given application is running.
-
-An easy way to install MySQL on Mac and Windows is via [MAMP](https://www.mamp.info/en/).
-
-### Dependencies
-
-To use a local MySQL database, add the following dependencies in `build.gradle`:
-
-```nohighlight
-compile('org.springframework.boot:spring-boot-starter-jdbc')
-compile('org.springframework.boot:spring-boot-starter-data-jpa')
-compile('mysql:mysql-connector-java')
-```
-
-If you previously used H2, remove that dependency.
-
-## `application.properties`
-
-The database connection needs to be configured via `src/main/resources/application.properties`.
-
-These properties use `property=value` syntax. For many, there are alternative values listed in the Spring documentation, but these are good for most purposes. The database user specified usually needs all privileges on the given database.
-
-`spring.datasource.url` - of the form `jdbc:mysql://localhost:8889/db` for a local database `db` on the default MySQL port 8889
-
-`spring.datasource.username` - Username to use when connecting to the db
-
-`spring.datasource.password` - Password to use when connecting to the db
-
-`spring.jpa.database = MYSQL` - specifies that you'll be using a MySQL database
-
-`spring.jpa.hibernate.ddl-auto = update` - Spring should attempt to update the database schema upon restart to reflect any changes to persistent model classes
-
-`spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect` - Specifies that we're using MySQL 5.x
-
-The database engine must be running when you start up your application.
 
 ## Additional References
 
