@@ -60,9 +60,9 @@ This allows Hibernate to create a new instance of your object, no matter what pr
 
 ### Field Annotations
 
-These are annotations are applicable within a class annotated by `@Entity`. They determine how object fields are persisted in a database.
+These annotations are applicable within a class annotated by `@Entity`. They determine how class fields are persisted in a database.
 
-These annotations can, in most cases, be applied to object fields directly, but they can also be applied to their getter methods. We recommend applying them to fields. Doing so means you don't have to expose a public setter for the given property, which can break encapsulation (think of an `id` field with a public setter). [Read about][field-vs-property] how these two approaches are different, and why you might choose one over the other.
+These annotations can, in most cases, be applied to fields directly, but they can also be applied to getter methods. We recommend applying them to fields. Doing so means you don't have to expose a public setter for the given property, which can break encapsulation (think of an `id` field with a public setter...not good). [Read about][field-vs-property] how these two approaches are different, and why you might choose one over the other.
 
 `@NotNull` - This is not actually a JPA annotation -- it is part of the `javax.validation.constraints` package -- but Hibernate enforces it as well. Specifies that the field may not be null.
 
