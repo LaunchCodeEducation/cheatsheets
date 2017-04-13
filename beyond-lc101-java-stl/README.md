@@ -64,13 +64,15 @@ Protip: As you scour the edges of the internet in search of tutorials and answer
 
 [Project Euler](https://projecteuler.net/)
 
-### Great Reeds
+### Great Reads
 
 [Clean Code](https://smile.amazon.com/dp/0132350882/ref=wl_it_dp_o_pd_nS_ttl?_encoding=UTF8&colid=1RLJ633KTNB8F&coliid=I3CB117REXGCVA) Now that you know how to code, learn how to code well.
 
 [The Pragmatic Programmer](https://smile.amazon.com/dp/020161622X/ref=wl_it_dp_o_pC_nS_ttl?_encoding=UTF8&colid=1RLJ633KTNB8F&coliid=ILKBPVXKAL1S5) How to become a great software developer, not just a coder.
 
 [Head First Design Patterns](https://smile.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124/ref=sr_1_1?s=books&ie=UTF8&qid=1492049981&sr=1-1&keywords=head+first+design+patterns) The Head First series excel at making the topic accessible. In Design Patterns, you'll learn about re-usable and efficient patterns you can use to solve problems without reinventing the wheel.
+
+[Cracking the Coding Interview](https://smile.amazon.com/dp/0984782850/ref=rdr_ext_tmb)
 
 ### Soft Skills
 
