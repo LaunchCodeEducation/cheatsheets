@@ -76,8 +76,8 @@ The `value` attribute will be set to the value of `${subscribe.submit}` after pr
 
 	```html
 	<tr th:each="mapItem : ${map}">
-		<td th:text="${prod.key}">Key</td>
-		<td th:text="${prod.value}">Value</td>
+		<td th:text="${mapItem.key}">Key</td>
+		<td th:text="${mapItem.value}">Value</td>
 	</tr>
 	```
 
