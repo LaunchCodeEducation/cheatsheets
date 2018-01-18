@@ -215,7 +215,7 @@ Forked repositories can easily be identified by the reference to the original pr
 
 ## Helpful Git Resources
 
-[Pro Git Book](https://git-scm.com/book/en/v2) - A referenc book covering Git in depth.
+[Pro Git Book](https://git-scm.com/book/en/v2) - A reference book covering Git in depth.
 
 [Flight Rules for Git](https://github.com/k88hudson/git-flight-rules) - A "How to" guide for git
 
