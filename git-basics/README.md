@@ -212,3 +212,14 @@ From your own profile page, you will see the forked repository listed alongside 
 Forked repositories can easily be identified by the reference to the original project under the project name on your profile.
 
 <img src="images/forked-repo.png" alt="Forked repository" width="480" />
+
+## Helpful Git Resources
+
+[Pro Git Book](https://git-scm.com/book/en/v2) - A reference book covering Git in depth.
+
+[Flight Rules for Git](https://github.com/k88hudson/git-flight-rules) - A "How to" guide for git
+
+[Interactive GitHub Sandbox](https://try.github.io) - A place to practice git without fear of messing anything up.
+
+[Connecting to GitHub with SSH](https://help.github.com/articles/connecting-to-github-with-ssh/)
+
