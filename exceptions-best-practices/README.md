@@ -39,7 +39,7 @@ As with catching, be specific with which types of exceptions you throw. **Never 
 
 ## How to Avoid Exceptions
 
-For some types of exceptions, there's little you can do. If a database goes down, it's down. However, many situations that result exceptions are avoidable.
+For some types of exceptions, there's little you can do. If a database goes down, it's down. However, many situations that result in exceptions are avoidable.
 
 ### Validate User Input
 
